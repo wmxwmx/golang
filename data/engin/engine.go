@@ -1,7 +1,6 @@
 package engin
 
 import (
-	"fmt"
 	"test/data/data"
 	"test/data/scheduler"
 	"test/data/worker"
@@ -38,8 +37,7 @@ func (e Engine) Run() {
 				break
 			}
 		}
-		fmt.Println("\n", ListData[0].Html)
-		//fmt.Println("\n",ListData[0].Url)
+		//fmt.Println("\n", ListData[0].Html)
 	}()
 	e.Scheduler.ConfigChan(&in)
 	//发送任务数据给协调器，进行过滤

@@ -1,7 +1,6 @@
 package worker
 
 import (
-	"fmt"
 	"test/data/data"
 )
 
@@ -15,7 +14,6 @@ func (w Worker) Prepare() {
 		for {
 			requestData := <-*w.In
 			resultData, err := fetchDetail(&requestData)
-			fmt.Println(resultData.Author)
 			if err != nil {
 				*w.Out <- *resultData
 				continue
