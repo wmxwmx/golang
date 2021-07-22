@@ -38,7 +38,8 @@ func (e Engine) Run() {
 				break
 			}
 		}
-		fmt.Println("%v\n",ListData[0].Url)
+		fmt.Println("\n", ListData[0].Html)
+		//fmt.Println("\n",ListData[0].Url)
 	}()
 	e.Scheduler.ConfigChan(&in)
 	//发送任务数据给协调器，进行过滤
