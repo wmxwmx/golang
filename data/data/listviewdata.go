@@ -11,6 +11,6 @@ type ListViewData struct {
 	Image       string    //图片
 	Slug        string    //网络请求key
 	Url         string    //原详情页url
-	Html        string //详情html
+	Html        string    //详情html
 
 }

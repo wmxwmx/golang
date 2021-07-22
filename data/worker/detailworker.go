@@ -12,7 +12,7 @@ type Worker struct {
 
 func (w Worker) Prepare() {
 	go func() {
-		for  {
+		for {
 			requestData := <-*w.In
 			resultData, err := fetchDetail(&requestData)
 			fmt.Println(resultData.Author)

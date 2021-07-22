@@ -28,18 +28,11 @@ func parse(htmlData []byte) string {
 	removeNode(htmlquery.FindOne(root, "//div[@class='post-meta post__block post__block_post-meta']"))
 	//去除底部推荐
 	removeNode(htmlquery.FindOne(root, "//div[@class='post-page__sidebar-col']"))
-
 	//去除搜索部分
 	removeNode(htmlquery.FindOne(root, "//div[@class='header-mobile-search layout__mobile-search']"))
-
-	//去除音频播放部分
-	//removeNode(htmlquery.FindOne(root, "//div[@class='post-actions post__block post__block_post-actions']"))
-	//removeNode(htmlquery.FindOne(root, "//div[@class='post-cover post__block post__block_cover']"))
-
 	//去除免责声明
 	removeNode(htmlquery.FindOne(root, "//p[@class='post-content__disclaimer']"))
 	removeNode(htmlquery.FindOne(root, "//div[@class='post__separator-line']"))
-
 	//处理音视频的播放和显示
 	body := htmlquery.FindOne(root, "/html/body")
 	body.AppendChild(&html.Node{

@@ -20,19 +20,19 @@ func FetchList() ([]data.ListViewData, error) {
 	}
 	request.Header.Add("content-type", "application/json")
 	response, err := http.DefaultClient.Do(request)
-	if err != nil || response.StatusCode != http.StatusOK{
+	if err != nil || response.StatusCode != http.StatusOK {
 		return nil, err
 	}
-	jsonStr,err:= ioutil.ReadAll(response.Body)
+	jsonStr, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	netData ,err:= JsonToNetData(jsonStr)
-	if err!= nil {
+	netData, err := JsonToNetData(jsonStr)
+	if err != nil {
 		panic(err)
 	}
 	var _ = request.Close
-	return NetToListData(netData),nil
+	return NetToListData(netData), nil
 
 }
 
@@ -113,7 +113,6 @@ func NetToListData(netData data.ListNetData) []data.ListViewData {
 
 	listData := make([]data.ListViewData, 0)
 	for _, netPostBean := range netData.Data.Locale.Tag.Posts.Data {
-
 		listData = append(listData, data.ListViewData{
 			//赋值标题
 			Title: netPostBean.PostTranslate.Title,
@@ -128,7 +127,7 @@ func NetToListData(netData data.ListNetData) []data.ListViewData {
 			//赋值请求详情页使用的key
 			Slug: netPostBean.Slug,
 			//赋值详情地址
-			Url : strings.Join([]string{global.DetailBaseUrl,netPostBean.Slug},""),
+			Url: strings.Join([]string{global.DetailBaseUrl, netPostBean.Slug}, ""),
 			//赋值作者名字
 			Author: func() string {
 				name := ""
@@ -144,4 +143,3 @@ func NetToListData(netData data.ListNetData) []data.ListViewData {
 	return listData
 
 }
-
