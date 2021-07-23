@@ -65,7 +65,7 @@ func getBitcoinListNetParams() map[string]interface{} {
 			"slug":          "bitcoin",
 			"order":         "postPublishedTime",
 			"offset":        0,
-			"length":        2,
+			"length":        122,
 			"short":         "en",
 			"cacheTimeInMS": 300000,
 		},

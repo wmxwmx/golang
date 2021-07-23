@@ -7,7 +7,8 @@ import (
 )
 
 type Engine struct {
-	Scheduler scheduler.DetailScheduler
+	Scheduler      scheduler.DetailScheduler
+	GoroutineCount int //开启携程个数
 }
 
 type Scheduler interface {
@@ -25,7 +26,7 @@ func (e Engine) Run() {
 	}
 	in := make(chan data.ListViewData)
 	out := make(chan data.ListViewData)
-	for i := 0; i < len(listViewData); i++ {
+	for i := 0; i < e.GoroutineCount; i++ {
 		creatWorker(&in, &out)
 	}
 	//接收每结果

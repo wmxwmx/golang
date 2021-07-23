@@ -9,7 +9,8 @@ import (
 func main() {
 
 	engin.Engine{
-		Scheduler: scheduler.DetailScheduler{},
+		Scheduler:      scheduler.DetailScheduler{},
+		GoroutineCount: 10,
 	}.Run()
 	time.Sleep(300 * time.Second)
 

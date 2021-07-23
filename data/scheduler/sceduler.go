@@ -9,7 +9,7 @@ type DetailScheduler struct {
 }
 
 func (s *DetailScheduler) Submit(data data.ListViewData) {
-	//这里可以添加判断，对需要再抓取的数据不再抛入chan
+	//这里可以添加判断，对不需要再抓取的数据不再抛入chan
 	if GoOn(&data) {
 		*s.sendToWorkChan <- data
 	}
